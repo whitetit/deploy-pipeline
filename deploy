@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     stages {
@@ -12,8 +13,10 @@ pipeline {
             }        
         }
         stage('Deploy - Staging') {            
-            steps {                
-                sh './deploy staging'                
+            steps {      
+                sh "chmod 775 ./deploy staging"
+                sh './deploy staging'  
+                sh "chmod 775 ./run-smoke-tests"
                 sh './run-smoke-tests'            
             }        
         }        
@@ -23,7 +26,8 @@ pipeline {
             }        
         }        
         stage('Deploy - Production') {            
-            steps {                
+            steps {     
+                sh "chmod 775 ./deploy production"
                 sh './deploy production'            
             }        
         }    
