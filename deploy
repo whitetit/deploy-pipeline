@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Deploy - Staging') {            
             steps {      
-                sh "chmod 775 ./deploy staging"
-                sh './deploy staging'  
+                sh "chmod 775 ./deploy-staging"
+                sh './deploy-staging'  
                 sh "chmod 775 ./run-smoke-tests"
                 sh './run-smoke-tests'            
             }        
@@ -27,8 +27,8 @@ pipeline {
         }        
         stage('Deploy - Production') {            
             steps {     
-                sh "chmod 775 ./deploy production"
-                sh './deploy production'            
+                sh "chmod 775 ./deploy-production"
+                sh './deploy-production'            
             }        
         }    
     }
